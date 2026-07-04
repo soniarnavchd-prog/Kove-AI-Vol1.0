@@ -17,6 +17,16 @@ load_dotenv()
 
 api_key = os.getenv("HUGGINGFACEHUB_API_TOKEN")
 
+# 🟢 Caches the heavy API connection setup
+@st.cache_resource
+def get_llm_model():
+    llm = HuggingFaceEndpoint(
+        repo_id="meta-llama/Meta-Llama-3-8B-Instruct",
+        task="text-generation",
+        huggingfacehub_api_token=api_key
+    )
+    return ChatHuggingFace(llm=llm)
+
 llm = HuggingFaceEndpoint(
     repo_id="meta-llama/Meta-Llama-3-8B-Instruct",
     task="text-generation",
