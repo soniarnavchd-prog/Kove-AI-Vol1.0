@@ -7,6 +7,11 @@ from langchain_core.messages import HumanMessage
 
 from llm import ask_ai
 
+# 🟢 Caches the embedding model in memory
+@st.cache_resource
+def get_embedding_model():
+    return HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
+
 
 def create_vector_db(pdf_path):
     loader = PyPDFLoader(pdf_path)
