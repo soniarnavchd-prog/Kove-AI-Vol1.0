@@ -2,6 +2,8 @@ streamlit
 langchain-core
 langchain-community
 langchain-huggingface
+langchain-text-splitters
+chromadb
+sentence-transformers
 pypdf
-chromadb==0.5.3
-python-dotenv
+google-generativeai
